@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Doctrine\Repository\Monitor\DoctrineMonitorRepository;
 use Illuminate\Support\ServiceProvider;
+use MarioDevv\Uptime\Monitor\Domain\MonitorRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,7 +13,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(
+            MonitorRepository::class,
+            DoctrineMonitorRepository::class
+        );
     }
 
     /**
