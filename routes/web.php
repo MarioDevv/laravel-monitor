@@ -7,4 +7,4 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/monitors', MonitorViewController::class)->name('monitors');
+Route::get('/monitors', MonitorViewController::class)->name('monitors.index');

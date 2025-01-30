@@ -3,6 +3,8 @@
 namespace App\Doctrine\Repository\Monitor;
 
 use App\Doctrine\DoctrineRepository;
+use CodelyTv\Criteria\Criteria;
+use MarioDevv\Criteria\CriteriaToDoctrineConverter;
 use MarioDevv\Uptime\Monitor\Domain\Monitor;
 use MarioDevv\Uptime\Monitor\Domain\MonitorRepository;
 
@@ -18,6 +20,16 @@ class DoctrineMonitorRepository extends DoctrineRepository implements MonitorRep
     {
         return $this->repository(Monitor::class)->findAll();
     }
+
+    public function matching(Criteria $criteria): array
+    {
+        $criteriaToDoctrineFields = [];
+
+        $doctrineCriteria = (new CriteriaToDoctrineConverter($criteriaToDoctrineFields))->convert($criteria);
+
+        return $this->repository(Monitor::class)->matching($doctrineCriteria)->toArray();
+    }
+
 
     public function byId(int $id): ?Monitor
     {
