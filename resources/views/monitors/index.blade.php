@@ -89,29 +89,38 @@
                             </td>
 
                             <td class="relative p-4 py-5">
-                                <!-- Botón que abre el menú -->
-                                <button data-popover-target="menu-{{ $monitor['id'] }}"
-                                    class="ml-2 rounded-md border border-transparent bg-slate-800 px-4 py-2 text-center text-sm text-white shadow-md transition-all hover:bg-slate-700 hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                                    type="button">
-                                    Open Menu
-                                </button>
+                                <div class="flex gap-1">
 
-                                <!-- Menú desplegable -->
-                                <ul id="menu-{{ $monitor['id'] }}"
-                                    class="absolute z-10 hidden min-w-[180px] overflow-auto rounded-lg border border-slate-200 bg-white p-1.5 shadow-sm focus:outline-none">
-                                    <li role="menuitem"
-                                        class="flex w-full cursor-pointer items-center rounded-md p-3 text-sm text-slate-800 transition-all hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100">
-                                        Menu Item 1
-                                    </li>
-                                    <li role="menuitem"
-                                        class="flex w-full cursor-pointer items-center rounded-md p-3 text-sm text-slate-800 transition-all hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100">
-                                        Menu Item 2
-                                    </li>
-                                    <li role="menuitem"
-                                        class="flex w-full cursor-pointer items-center rounded-md p-3 text-sm text-slate-800 transition-all hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100">
-                                        Menu Item 3
-                                    </li>
-                                </ul>
+
+                                    <a href="{{ route('monitors.show', $monitor['id']) }}"
+                                        class="rounded-md border border-transparent p-2.5 text-center text-sm text-slate-600 transition-all hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                        type="button">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                                            <path
+                                                d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" />
+                                        </svg>
+                                    </a>
+
+                                    <button
+                                        class="rounded-md border border-transparent p-2.5 text-center text-sm text-slate-600 transition-all hover:bg-slate-100 focus:bg-slate-100 active:bg-slate-100 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                        type="button">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                                            <path
+                                                d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                                            <path d="M16 5l3 3" />
+                                        </svg>
+                                    </button>
+
+
+
+                                </div>
                             </td>
 
                         </tr>
@@ -161,21 +170,4 @@
 @endsection
 
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        document.querySelectorAll("[data-popover-target]").forEach(button => {
-            button.addEventListener("click", function() {
-                let targetId = this.getAttribute("data-popover-target");
-                let menu = document.getElementById(targetId);
-
-                // Cierra todos los menús antes de abrir el actual
-                document.querySelectorAll("ul[id^='menu-']").forEach(el => {
-                    if (el.id !== targetId) el.classList.add("hidden");
-                });
-
-                // Alterna la visibilidad del menú
-                menu.classList.toggle("hidden");
-            });
-        });
-    });
-</script>
+<script></script>

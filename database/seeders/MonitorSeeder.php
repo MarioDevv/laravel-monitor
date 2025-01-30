@@ -7,50 +7,44 @@ use Illuminate\Support\Facades\DB;
 
 class MonitorSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        $monitorId1 = DB::table('monitors')->insertGetId(
-            [
-                'url'        => 'https://example.com',
-                'interval'   => '60',
-                'state'      => 'active',
-                'time_out'   => '30',
-                'last_check' => now(),
-            ]);
+        $monitors = [];
+        for ($i = 1; $i <= 5; $i++) {
+            $monitors[] = DB::table('monitors')->insertGetId(
+                [
+                    'url'        => "https://example$i.com",
+                    'interval'   => rand(30, 120),
+                    'state'      => rand(1, 3),
+                    'time_out'   => rand(10, 90),
+                    'last_check' => now()->subMinutes(rand(1, 60)),
+                ]);
+        }
 
-        $monitorId2 = DB::table('monitors')->insertGetId(
-            [
-                'url'        => 'https://test.com',
-                'interval'   => '60',
-                'state'      => 'inactive',
-                'time_out'   => '60',
-                'last_check' => now(),
-            ]);
+        $histories = [];
+        for ($j = 1; $j <= 10; $j++) {
+            $histories[] = DB::table('history')->insertGetId(
+                [
+                    'pinged_at'     => now()->subMinutes(rand(1, 1440)),
+                    'state'         => rand(1, 3),
+                    'response_time' => round(mt_rand(10, 500) / 1000, 3),
+                ]);
+        }
 
-        $historyId1 = DB::table('history')->insertGetId(
-            [
-                'pinged_at'     => now(),
-                'state'         => 1,
-                'response_time' => 0.23,
-            ]);
+        $monitorHistory = [];
+        foreach ($monitors as $monitorId) {
+            $assignedHistories = array_rand($histories, rand(2, 4));
+            foreach ((array)$assignedHistories as $historyIndex) {
+                $monitorHistory[] = [
+                    'monitor_id' => $monitorId,
+                    'history_id' => $histories[$historyIndex],
+                ];
+            }
+        }
 
-        $historyId2 = DB::table('history')->insertGetId(
-            [
-                'pinged_at'     => now(),
-                'state'         => 1,
-                'response_time' => 0.45,
-            ]);
+        DB::table('monitors_history')->insert($monitorHistory);
 
-        DB::table('monitors_history')->insert(
-            [
-                ['monitor_id' => $monitorId1, 'history_id' => $historyId1],
-                ['monitor_id' => $monitorId2, 'history_id' => $historyId2],
-            ]);
-
-
-        echo "Datos insertados correctamente.\n";
+        echo "Datos insertados correctamente con mayor variedad de monitores e historiales.\n";
     }
 }
+

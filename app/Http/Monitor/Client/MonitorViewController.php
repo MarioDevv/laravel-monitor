@@ -2,37 +2,40 @@
 
 namespace App\Http\Monitor\Client;
 
-use CodelyTv\Criteria\Criteria;
+use App\Http\Controllers\Controller;
+use App\Http\Monitor\Assemblers\CompleteMonitorAssembler;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
-use MarioDevv\Uptime\Monitor\Application\PaginatedMonitorAssembler;
-use MarioDevv\Uptime\Monitor\Application\Search\PaginatedMonitorDTO;
-use MarioDevv\Uptime\Monitor\Application\Search\SearchMonitors;
+use MarioDevv\Uptime\Monitor\Application\Find\FindMonitor;
+use MarioDevv\Uptime\Monitor\Application\Find\FindMonitorRequest;
 use MarioDevv\Uptime\Monitor\Domain\MonitorRepository;
 
-class MonitorViewController
+class MonitorViewController extends Controller
 {
 
-    private SearchMonitors $searchMonitors;
+    private FindMonitor $findMonitor;
 
     public function __construct()
     {
-        $this->searchMonitors = new SearchMonitors(
+        $this->findMonitor = new FindMonitor(
             app(MonitorRepository::class),
-            new PaginatedMonitorAssembler()
+            new CompleteMonitorAssembler()
         );
     }
 
-    public function __invoke(): Application|Factory|View
+
+    /**
+     * @throws \Exception
+     */
+    public function __invoke(int $id): View|Factory|Application
     {
+        $monitor = ($this->findMonitor)(new FindMonitorRequest($id));
 
-        $monitors = ($this->searchMonitors)(Criteria::withFilters([]));
+        $formattedMonitor = $monitor->json();
 
-        $mappedMonitors = array_map(fn(PaginatedMonitorDTO $monitor) => $monitor->json(), $monitors);
-
-
-        return view('monitors.index', compact('mappedMonitors'));
+        return view('monitors.show', compact('formattedMonitor'));
     }
+
 
 }

@@ -68,12 +68,12 @@
 
             <!-- Contenedor principal donde irá el contenido de cada vista -->
             <main class="flex-1 p-6">
-                <div class="mx-auto mt-8 max-w-7xl">
+                <div class="mx-auto mt-12 max-w-7xl">
                     @yield('content')
                 </div>
             </main>
         </div>
 
-        <script src="/node_modules/@material-tailwind/html/scripts/popover.js"></script>
+        <script async src="https://unpkg.com/@material-tailwind/html@latest/scripts/ripple.js"></script>
     </body>
 </html>

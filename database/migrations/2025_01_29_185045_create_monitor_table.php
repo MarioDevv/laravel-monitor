@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('url');
             $table->string('interval');
-            $table->string('state');
+            $table->tinyInteger('state');
             $table->string('time_out');
             $table->timestamp('last_check')->nullable();
         });
