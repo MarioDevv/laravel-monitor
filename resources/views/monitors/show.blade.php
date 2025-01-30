@@ -4,16 +4,28 @@
 
 @section('content')
 
-    <div class="flex items-center gap-2 mb-6">
-        <span
-            class="@if ($formattedMonitor['status'] == 1) bg-green-500
-        @elseif($formattedMonitor['status'] == 2) bg-red-500
-        @elseif($formattedMonitor['status'] == 3) bg-yellow-500
-        @else bg-gray-400 @endif h-5 w-5 animate-pulse rounded-full">
-        </span>
-        <h5 class="text-xl font-semibold text-slate-800">
-            {{ $formattedMonitor['url'] }}
-        </h5>
+
+
+    <div class="mb-6 flex flex-row justify-between gap-2">
+
+
+        <div>
+            <a href="{{ $formattedMonitor['url'] }}" class="text-2xl font-semibold text-slate-800 underline">
+                {{ $formattedMonitor['friendlyName'] }}
+            </a>
+            <p class="text-xs font-light text-slate-600">{{ $formattedMonitor['url'] }}</p>
+        </div>
+
+        <a href="{{ route('monitors.index') }}">
+            <button
+                class="flex w-20 items-center justify-center gap-2 rounded-md border border-transparent bg-slate-800 px-4 py-2 text-center text-sm text-white shadow-md transition-all hover:bg-slate-700 hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                type="button" data-ripple-light="true">
+                Volver
+            </button>
+
+        </a>
+
+
     </div>
 
     <div class="flex flex-col gap-4">
@@ -64,14 +76,14 @@
                 <div class="border-l border-gray-300"></div>
 
                 <div class="flex-1">
-                    <h5 class="text-xl font-semibold text-slate-800">{{$formattedMonitor['responseTimeMin']}} ms</h5>
+                    <h5 class="text-xl font-semibold text-slate-800">{{ $formattedMonitor['responseTimeMin'] }} ms</h5>
                     <p class="text-sm font-light text-slate-600">Mínimo</p>
                 </div>
 
                 <div class="border-l border-gray-300"></div>
 
                 <div class="flex-1">
-                    <h5 class="text-xl font-semibold text-slate-800">{{$formattedMonitor['responseTimeMax']}} ms</h5>
+                    <h5 class="text-xl font-semibold text-slate-800">{{ $formattedMonitor['responseTimeMax'] }} ms</h5>
                     <p class="text-sm font-light text-slate-600">Máximum</p>
                 </div>
             </div>
@@ -89,56 +101,52 @@
                 class="relative flex h-full w-full flex-col overflow-scroll rounded-lg bg-white bg-clip-border text-gray-700">
                 <table class="w-full min-w-max table-auto text-left">
                     <thead>
-                    <tr>
-                        <th class="border-b border-slate-300 p-4">
-                            <p class="block text-sm font-normal leading-none text-slate-500">
-                                Status
-                            </p>
-                        </th>
-                        <th class="border-b border-slate-300 p-4">
-                            <p class="block text-sm font-normal leading-none text-slate-500">
-                                At
-                            </p>
-                        </th>
+                        <tr>
+                            <th class="border-b border-slate-300 p-4">
+                                <p class="block text-sm font-normal leading-none text-slate-500">
+                                    Status
+                                </p>
+                            </th>
+                            <th class="border-b border-slate-300 p-4">
+                                <p class="block text-sm font-normal leading-none text-slate-500">
+                                    At
+                                </p>
+                            </th>
 
-                    </tr>
+                        </tr>
                     </thead>
                     <tbody>
 
-                    @if(count($formattedMonitor['incidents']) > 0)
+                        @if (count($formattedMonitor['incidents']) > 0)
 
-                        @foreach($formattedMonitor['incidents'] as $history)
-
-                            <tr class="hover:bg-slate-50">
-                                <td class="border-b border-slate-200 p-4">
-                                    <p class="block text
-                                    @if ($history['status'] == 1) text-green-500
+                            @foreach ($formattedMonitor['incidents'] as $history)
+                                <tr class="hover:bg-slate-50">
+                                    <td class="border-b border-slate-200 p-4">
+                                        <p
+                                            class="text @if ($history['status'] == 1) text-green-500
                                     @elseif($history['status'] == 2) text-red-500
                                     @elseif($history['status'] == 3) text-yellow-500
-                                    @else text-gray-400 @endif
-                                        text-sm text-slate-800">
-                                        @if ($history['status'] == 1)
-                                            Activo
-                                        @elseif($history['status'] == 2)
-                                            Inactivo
-                                        @elseif($history['status'] == 3)
-                                            En pausa
-                                        @else
-                                            Desconocido
-                                        @endif
-                                    </p>
-                                </td>
+                                    @else text-gray-400 @endif block text-sm text-slate-800">
+                                            @if ($history['status'] == 1)
+                                                Activo
+                                            @elseif($history['status'] == 2)
+                                                Inactivo
+                                            @elseif($history['status'] == 3)
+                                                En pausa
+                                            @else
+                                                Desconocido
+                                            @endif
+                                        </p>
+                                    </td>
 
-                                <td class="border-b border-slate-200 p-4">
-                                    <p class="block text text-sm text-slate-800">
-                                        {{ $history['at'] }}
-                                    </p>
-                                </td>
-
-                        @endforeach
-
-                    @else
-                    @endif
+                                    <td class="border-b border-slate-200 p-4">
+                                        <p class="text block text-sm text-slate-800">
+                                            {{ $history['at'] }}
+                                        </p>
+                                    </td>
+                            @endforeach
+                        @else
+                        @endif
 
                     </tbody>
                 </table>
@@ -150,7 +158,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
         // Extraer datos de incidentes desde Blade y pasarlos como JSON a JavaScript
         const incidents = @json($formattedMonitor['incidents']);
 

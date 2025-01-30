@@ -27,12 +27,11 @@ class MonitorsViewController
     public function __invoke(): Application|Factory|View
     {
 
-        $monitors = ($this->searchMonitors)(Criteria::withFilters([]));
+        $array = ($this->searchMonitors)(Criteria::withFilters([]));
 
-        $mappedMonitors = array_map(fn(PaginatedMonitorDTO $monitor) => $monitor->json(), $monitors);
+        $monitors = array_map(fn(PaginatedMonitorDTO $monitor) => $monitor->json(), $array);
 
-
-        return view('monitors.index', compact('mappedMonitors'));
+        return view('monitors.index', compact('monitors'));
     }
 
 }
