@@ -4,8 +4,6 @@
 
 @section('content')
 
-
-
     <div class="mb-6 flex flex-row justify-between gap-2">
 
 
@@ -18,8 +16,8 @@
 
         <a href="{{ route('monitors.index') }}">
             <button
-                class="flex w-20 items-center justify-center gap-2 rounded-md border border-transparent bg-slate-800 px-4 py-2 text-center text-sm text-white shadow-md transition-all hover:bg-slate-700 hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                type="button" data-ripple-light="true">
+                    class="flex w-20 items-center justify-center gap-2 rounded-md border border-transparent bg-slate-800 px-4 py-2 text-center text-sm text-white shadow-md transition-all hover:bg-slate-700 hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                    type="button" data-ripple-light="true">
                 Volver
             </button>
 
@@ -97,68 +95,54 @@
                 <p class="mb-5 ml-3 text-slate-500">Últimas 10 incidencias reportadas por el monitor</p>
             </div>
 
-            <div
-                class="relative flex h-full w-full flex-col overflow-scroll rounded-lg bg-white bg-clip-border text-gray-700">
+            <!-- Ajustamos la altura máxima y el overflow -->
+            <div class="relative flex flex-col max-h-96 overflow-y-auto rounded-lg bg-white text-gray-700">
                 <table class="w-full min-w-max table-auto text-left">
                     <thead>
-                        <tr>
-                            <th class="border-b border-slate-300 p-4">
-                                <p class="block text-sm font-normal leading-none text-slate-500">
-                                    Status
-                                </p>
-                            </th>
-                            <th class="border-b border-slate-300 p-4">
-                                <p class="block text-sm font-normal leading-none text-slate-500">
-                                    At
-                                </p>
-                            </th>
-
-                        </tr>
+                    <tr>
+                        <th class="border-b border-slate-300 p-4">
+                            <p class="block text-sm font-normal leading-none text-slate-500">Status</p>
+                        </th>
+                        <th class="border-b border-slate-300 p-4">
+                            <p class="block text-sm font-normal leading-none text-slate-500">At</p>
+                        </th>
+                    </tr>
                     </thead>
                     <tbody>
-
-                        @if (count($formattedMonitor['incidents']) > 0)
-
-                            @foreach ($formattedMonitor['incidents'] as $history)
-                                <tr class="hover:bg-slate-50">
-                                    <td class="border-b border-slate-200 p-4">
-                                        <p
-                                            class="text @if ($history['status'] == 1) text-green-500
-                                    @elseif($history['status'] == 2) text-red-500
-                                    @elseif($history['status'] == 3) text-yellow-500
-                                    @else text-gray-400 @endif block text-sm text-slate-800">
-                                            @if ($history['status'] == 1)
-                                                Activo
-                                            @elseif($history['status'] == 2)
-                                                Inactivo
-                                            @elseif($history['status'] == 3)
-                                                En pausa
-                                            @else
-                                                Desconocido
-                                            @endif
-                                        </p>
-                                    </td>
-
-                                    <td class="border-b border-slate-200 p-4">
-                                        <p class="text block text-sm text-slate-800">
-                                            {{ $history['at'] }}
-                                        </p>
-                                    </td>
-                            @endforeach
-                        @else
-                        @endif
-
+                    @if (count($formattedMonitor['incidents']) > 0)
+                        @foreach ($formattedMonitor['incidents'] as $history)
+                            <tr class="hover:bg-slate-50">
+                                <td class="border-b border-slate-200 p-4">
+                                    <p class="@if ($history['status'] == 1) text-green-500
+                  @elseif($history['status'] == 2) text-red-500
+                  @else text-gray-400 @endif block text-sm text-slate-800">
+                                        @if ($history['status'] == 1)
+                                            Activo
+                                        @elseif($history['status'] == 2)
+                                            Inactivo
+                                        @else
+                                            Desconocido
+                                        @endif
+                                    </p>
+                                </td>
+                                <td class="border-b border-slate-200 p-4">
+                                    <p class="text block text-sm text-slate-800">
+                                        {{ $history['at'] }}
+                                    </p>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
                     </tbody>
                 </table>
             </div>
-
         </div>
     </div>
 @endsection
 
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
         // Extraer datos de incidentes desde Blade y pasarlos como JSON a JavaScript
         const incidents = @json($formattedMonitor['incidents']);
 
@@ -205,6 +189,10 @@
             },
             yaxis: {
                 labels: {
+                    formatter: function (val) {
+                        // Retornar siempre con 2 decimales
+                        return val.toFixed(2);
+                    },
                     style: {
                         colors: "#616161",
                         fontSize: "12px",
@@ -234,6 +222,12 @@
                 theme: "dark",
                 x: {
                     format: "dd MMM HH:mm" // Formato de fecha en tooltip
+                },
+                y: {
+                    formatter: function (val) {
+                        // También en el tooltip se muestran 2 decimales
+                        return val.toFixed(2);
+                    }
                 }
             }
         };
@@ -242,3 +236,4 @@
         chart.render();
     });
 </script>
+

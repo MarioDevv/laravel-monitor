@@ -45,9 +45,9 @@ class CompleteMonitorDTO
             'status'          => $this->status,
             'interval'        => $this->interval,
             'lastCheck'       => $this->lastCheck,
-            'responseTimeAvg' => $this->responseTimeAvg,
-            'responseTimeMax' => $this->responseTimeMax,
-            'responseTimeMin' => $this->responseTimeMin,
+            'responseTimeAvg' => round($this->responseTimeAvg, 2),
+            'responseTimeMax' => round($this->responseTimeMax, 2),
+            'responseTimeMin' => round($this->responseTimeMin, 2),
             'incidents'       => array_map(fn(ViewIncidentDTO $incident) => $incident->json(), $this->history),
         ];
     }

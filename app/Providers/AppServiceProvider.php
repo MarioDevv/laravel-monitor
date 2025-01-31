@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Doctrine\Repository\Monitor\DoctrineMonitorRepository;
+use App\Doctrine\Repository\Monitor\Repository\DoctrineMonitorRepository;
 use Illuminate\Support\ServiceProvider;
 use MarioDevv\Uptime\Monitor\Domain\MonitorRepository;
 

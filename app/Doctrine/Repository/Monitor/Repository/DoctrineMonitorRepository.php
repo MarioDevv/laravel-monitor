@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Doctrine\Repository\Monitor;
+namespace App\Doctrine\Repository\Monitor\Repository;
 
 use App\Doctrine\DoctrineRepository;
 use CodelyTv\Criteria\Criteria;

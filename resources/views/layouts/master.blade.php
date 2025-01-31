@@ -68,7 +68,7 @@
 
             <!-- Contenedor principal donde irá el contenido de cada vista -->
             <main class="flex-1 p-6">
-                <div class="mx-auto mt-12 max-w-7xl">
+                <div class="mx-auto mt-12 max-w-[85rem]">
                     @yield('content')
                 </div>
             </main>

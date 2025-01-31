@@ -21,6 +21,9 @@
         <embedded name="lastCheck" class="MarioDevv\Uptime\Monitor\Domain\MonitorLastCheck" use-column-prefix="false"/>
 
         <many-to-many field="history" target-entity="MarioDevv\Uptime\Monitor\Domain\MonitorHistory">
+            <cascade>
+                <cascade-all/>
+            </cascade>
             <join-table name="monitors_history">
                 <join-columns>
                     <join-column name="monitor_id" referenced-column-name="id"/>
