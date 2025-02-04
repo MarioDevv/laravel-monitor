@@ -27,7 +27,7 @@ class CompleteMonitorDTO
         $this->url             = $monitor->url()->value();
         $this->status          = $monitor->state()->value();
         $this->interval        = $monitor->interval()->value();
-        $this->lastCheck       = $monitor->lastCheck()->format();
+        $this->lastCheck       = $monitor->lastCheck()->format('d/m/Y H:i');
         $this->responseTimeAvg = $monitor->responseTimeAvg();
         $this->responseTimeMax = $monitor->responseTimeMax();
         $this->responseTimeMin = $monitor->responseTimeMin();

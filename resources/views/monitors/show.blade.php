@@ -65,7 +65,7 @@
             <div class="px-2">
                 <div id="line-chart"></div>
             </div>
-            <div class="flex justify-between pt-4 text-center">
+            <div class="flex justify-between text-center">
                 <div class="flex-1">
                     <h5 class="text-xl font-semibold text-slate-800">{{ $formattedMonitor['responseTimeAvg'] }} ms</h5>
                     <p class="text-sm font-light text-slate-600">Media</p>
@@ -95,7 +95,7 @@
                 <p class="mb-5 ml-3 text-slate-500">Últimas 10 incidencias reportadas por el monitor</p>
             </div>
 
-            <div class="max-h-40 overflow-x-auto">
+            <div class="max-h-60 overflow-x-auto">
                 <!-- Ajustamos la altura máxima y el overflow -->
                 <table class="w-full min-w-max table-auto text-left">
                     <thead>

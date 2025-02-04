@@ -22,11 +22,15 @@ class PaginatedMonitorDTO
         $this->lastCheck    = $monitor->lastCheck()->format();
     }
 
-    private function friendlyName(string $value): string
+    function friendlyName(string $value): string
     {
         $array = explode('//', $value);
-        return $array[1];
+
+        array_shift($array);
+
+        return explode('/', join($array))[0];
     }
+
 
     public function json(): array
     {
