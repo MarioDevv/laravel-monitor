@@ -4,7 +4,7 @@
     "scripts": {
         "build": "vite build",
         "dev": "vite",
-        "format": "blade-formatter \"resources/views/**/*.blade.php\" --write"
+        "format": "blade-formatter \"resources/**/*.blade.php\" --write"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.20",

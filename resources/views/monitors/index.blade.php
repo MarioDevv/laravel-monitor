@@ -18,9 +18,10 @@
                                 class="pointer-events-none absolute right-3 top-1/2 grid h-5 w-5 -translate-y-1/2 place-items-center text-slate-400">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                     stroke="currentColor" aria-hidden="true" class="h-5 w-5">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0
-                                                                      105.196 5.196a7.5 7.5 0
-                                                                      0010.607 10.607z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M21 21l-5.197-5.197m0 0A7.5 7.5 0
+                                                                                                                  105.196 5.196a7.5 7.5 0
+                                                                                                                  0010.607 10.607z" />
                                 </svg>
                             </div>
                             <input
@@ -121,10 +122,11 @@
                                                 stroke-linejoin="round" class="icon icon-tabler icon-tabler-eye">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                                 <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-                                                <path d="M21 12c-2.4 4 -5.4 6 -9 6
-                                                                                     c-3.6 0 -6.6 -2 -9 -6
-                                                                                     c2.4 -4 5.4 -6 9 -6
-                                                                                     c3.6 0 6.6 2 9 6" />
+                                                <path
+                                                    d="M21 12c-2.4 4 -5.4 6 -9 6
+                                                                                                                                 c-3.6 0 -6.6 -2 -9 -6
+                                                                                                                                 c2.4 -4 5.4 -6 9 -6
+                                                                                                                                 c3.6 0 6.6 2 9 6" />
                                             </svg>
                                         </button>
 
@@ -133,11 +135,12 @@
                                             class="relative inline-flex h-9 w-9 items-center justify-center rounded-md text-slate-600 transition-colors hover:bg-slate-100 focus:outline-none active:bg-slate-200">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                 viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
-                                                <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157
-                                                                                   3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513
-                                                                                   8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0
-                                                                                   00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25
-                                                                                   5.25 0 002.214-1.32l12.15-12.15z">
+                                                <path
+                                                    d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157
+                                                                                                                               3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513
+                                                                                                                               8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0
+                                                                                                                               00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25
+                                                                                                                               5.25 0 002.214-1.32l12.15-12.15z">
                                                 </path>
                                             </svg>
                                         </button>
@@ -171,16 +174,13 @@
 
         <div class="flex w-3/12 flex-col gap-2">
 
-            <a
-                href="{{ route('monitors.new') }}"
+            <a href="{{ route('monitors.new') }}"
                 class="rounded-md border border-transparent bg-slate-800 px-4 py-2 text-center text-sm text-white shadow-md transition-all hover:bg-slate-700 hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                data-ripple-light="true"
-                type="button"
-            >
+                data-ripple-light="true" type="button">
                 New Monitor
             </a>
 
-            <div class="relative flex h-56 flex-col justify-between rounded-lg bg-white p-6 text-slate-700 shadow-md">
+            <div class="relative flex h-[12rem] flex-col justify-between rounded-lg bg-white p-6 text-slate-700 shadow-md">
 
                 <h3 class="font-semibold">Current Status</h3>
 
