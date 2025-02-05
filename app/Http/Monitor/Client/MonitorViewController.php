@@ -4,6 +4,8 @@ namespace App\Http\Monitor\Client;
 
 use App\Http\Controllers\Controller;
 use App\Http\Monitor\Assemblers\CompleteMonitorAssembler;
+use App\Http\Monitor\Assemblers\MonitorDTOAssembler;
+use App\Http\Monitor\DTOs\CompleteMonitorDTO;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
@@ -20,7 +22,7 @@ class MonitorViewController extends Controller
     {
         $this->findMonitor = new FindMonitor(
             app(MonitorRepository::class),
-            new CompleteMonitorAssembler()
+            new MonitorDTOAssembler(CompleteMonitorDTO::class)
         );
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Monitor\Client;
 
+use App\Http\Monitor\Assemblers\MonitorDTOAssembler;
 use App\Http\Monitor\Assemblers\PaginatedMonitorAssembler;
 use App\Http\Monitor\DTOs\PaginatedMonitorDTO;
 use CodelyTv\Criteria\Criteria;
@@ -20,7 +21,7 @@ class MonitorsViewController
     {
         $this->searchMonitors = new SearchMonitors(
             app(MonitorRepository::class),
-            new PaginatedMonitorAssembler()
+            new MonitorDTOAssembler(PaginatedMonitorDTO::class)
         );
     }
 

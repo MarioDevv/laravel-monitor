@@ -127,13 +127,15 @@
                     value="0" class="my-2 w-full cursor-pointer accent-slate-800"
                     oninput="updateAdvancedIntervalLabel(this.value)" />
             </div>
-
-            <!-- Botón para enviar el formulario -->
-            <div class="mt-6">
-                <x-button type="submit" text="Create Monitor" :ripple="true" />
-            </div>
         </div>
+
+
+        <div class="flex w-full justify-end bg-transparent">
+            <x-button type="submit" text="Create monitor" :ripple="true" />
+        </div>
+
     </form>
+
 @endsection
 
 <script>
