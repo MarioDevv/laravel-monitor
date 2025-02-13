@@ -20,6 +20,8 @@
 
         <embedded name="lastCheck" class="MarioDevv\Uptime\Monitor\Domain\MonitorLastCheck" use-column-prefix="false"/>
 
+        <embedded name="sslExpiration" class="MarioDevv\Uptime\Monitor\Domain\MonitorSSLExpiration" use-column-prefix="false"/>
+
         <many-to-many field="history" target-entity="MarioDevv\Uptime\Monitor\Domain\MonitorHistory">
             <cascade>
                 <cascade-all/>

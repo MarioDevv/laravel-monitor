@@ -10,15 +10,16 @@ class CompleteMonitorDTO
 
     private int $id;
 
-    private string $friendlyName;
-    private string $url;
-    private int $status;
-    private int $interval;
+    private string  $friendlyName;
+    private string  $url;
+    private int     $status;
+    private int     $interval;
     private ?string $lastCheck;
-    private float $responseTimeAvg;
-    private float $responseTimeMax;
-    private float $responseTimeMin;
-    private array $history;
+    private ?string $sslExpiration;
+    private float   $responseTimeAvg;
+    private float   $responseTimeMax;
+    private float   $responseTimeMin;
+    private array   $history;
 
     public function __construct(Monitor $monitor, ...$args)
     {
@@ -28,6 +29,7 @@ class CompleteMonitorDTO
         $this->status          = $monitor->state()->value();
         $this->interval        = $monitor->interval()->value();
         $this->lastCheck       = $monitor->lastCheck()->format('d/m/Y H:i');
+        $this->sslExpiration   = $monitor->sslExpiration()->format('d F Y');
         $this->responseTimeAvg = $monitor->responseTimeAvg();
         $this->responseTimeMax = $monitor->responseTimeMax();
         $this->responseTimeMin = $monitor->responseTimeMin();
@@ -45,6 +47,7 @@ class CompleteMonitorDTO
             'status'          => $this->status,
             'interval'        => $this->interval,
             'lastCheck'       => $this->lastCheck,
+            'sslExpiration'   => $this->sslExpiration,
             'responseTimeAvg' => round($this->responseTimeAvg, 2),
             'responseTimeMax' => round($this->responseTimeMax, 2),
             'responseTimeMin' => round($this->responseTimeMin, 2),

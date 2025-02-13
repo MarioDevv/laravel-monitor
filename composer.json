@@ -14,7 +14,8 @@
     "laravel/framework": "^11.31",
     "laravel/tinker": "^2.9",
     "mariodevv/uptime": "dev-master",
-    "ext-curl": "*"
+    "ext-curl": "*",
+    "ext-openssl": "*"
   },
   "require-dev": {
     "fakerphp/faker": "^1.23",

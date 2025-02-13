@@ -19,14 +19,10 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                     stroke="currentColor" aria-hidden="true" class="h-5 w-5">
                                     <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M21 21l-5.197-5.197m0 0A7.5 7.5 0
-                                                                                                                                          105.196 5.196a7.5 7.5 0
-                                                                                                                                          0010.607 10.607z" />
+                                        d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                                 </svg>
                             </div>
-                            <input
-                                class="peer h-full w-full rounded-md border border-slate-200 bg-transparent px-3 py-2.5 pr-9 text-sm font-normal text-slate-800 placeholder-slate-400 outline-none focus:border-slate-800 focus:ring-0 disabled:cursor-not-allowed"
-                                placeholder="Buscar monitoreos..." />
+                            <x-input placeholder="Buscar..."/>
                         </div>
                     </div>
                 </div>
@@ -124,9 +120,9 @@
                                                 <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
                                                 <path
                                                     d="M21 12c-2.4 4 -5.4 6 -9 6
-                                                                                                                                                         c-3.6 0 -6.6 -2 -9 -6
-                                                                                                                                                         c2.4 -4 5.4 -6 9 -6
-                                                                                                                                                         c3.6 0 6.6 2 9 6" />
+                                                                                                                                                                         c-3.6 0 -6.6 -2 -9 -6
+                                                                                                                                                                         c2.4 -4 5.4 -6 9 -6
+                                                                                                                                                                         c3.6 0 6.6 2 9 6" />
                                             </svg>
                                         </button>
 
@@ -137,10 +133,10 @@
                                                 viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
                                                 <path
                                                     d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157
-                                                                                                                                                       3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513
-                                                                                                                                                       8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0
-                                                                                                                                                       00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25
-                                                                                                                                                       5.25 0 002.214-1.32l12.15-12.15z">
+                                                                                                                                                                       3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513
+                                                                                                                                                                       8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0
+                                                                                                                                                                       00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25
+                                                                                                                                                                       5.25 0 002.214-1.32l12.15-12.15z">
                                                 </path>
                                             </svg>
                                         </button>

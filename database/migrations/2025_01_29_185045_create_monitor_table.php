@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -18,6 +17,7 @@ return new class extends Migration
             $table->tinyInteger('state');
             $table->string('time_out');
             $table->timestamp('last_check')->nullable();
+            $table->timestamp('ssl_expiration')->nullable();
         });
     }
 

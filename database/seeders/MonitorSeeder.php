@@ -13,11 +13,12 @@ class MonitorSeeder extends Seeder
         for ($i = 1; $i <= 5; $i++) {
             $monitors[] = DB::table('monitors')->insertGetId(
                 [
-                    'url'        => "https://example$i.com",
-                    'interval'   => rand(30, 120),
-                    'state'      => rand(1, 3),
-                    'time_out'   => rand(10, 90),
-                    'last_check' => now()->subMinutes(rand(1, 60)),
+                    'url'            => "https://example$i.com",
+                    'interval'       => rand(30, 120),
+                    'state'          => rand(1, 3),
+                    'time_out'       => rand(10, 90),
+                    'last_check'     => now()->subMinutes(rand(1, 60)),
+                    'ssl_expiration' => null
                 ]);
         }
 

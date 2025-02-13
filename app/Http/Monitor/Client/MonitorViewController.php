@@ -3,7 +3,6 @@
 namespace App\Http\Monitor\Client;
 
 use App\Http\Controllers\Controller;
-use App\Http\Monitor\Assemblers\CompleteMonitorAssembler;
 use App\Http\Monitor\Assemblers\MonitorDTOAssembler;
 use App\Http\Monitor\DTOs\CompleteMonitorDTO;
 use Illuminate\Contracts\View\Factory;

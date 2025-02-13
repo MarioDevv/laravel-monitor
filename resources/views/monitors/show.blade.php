@@ -14,14 +14,24 @@
             <p class="text-xs font-light text-slate-600">{{ $formattedMonitor['url'] }}</p>
         </div>
 
-        <a href="{{ route('monitors.index') }}">
-            <button
-                class="flex w-20 items-center justify-center gap-2 rounded-md border border-transparent bg-slate-800 px-4 py-2 text-center text-sm text-white shadow-md transition-all hover:bg-slate-700 hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                type="button" data-ripple-light="true">
-                Volver
-            </button>
+        <div class="flex gap-2">
+            <form action="{{ route('monitors.ping', $formattedMonitor['id']) }}" method="POST">
+                @csrf
+                <button
+                    class="flex w-20 items-center justify-center gap-2 rounded-md border border-transparent bg-slate-800 px-4 py-2 text-center text-sm text-white shadow-md transition-all hover:bg-slate-700 hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                    type="submit" data-ripple-light="true">
+                    Ping
+                </button>
+            </form>
 
-        </a>
+            <a href="{{ route('monitors.index') }}">
+                <button
+                    class="flex w-20 items-center justify-center gap-2 rounded-md border border-transparent bg-slate-800 px-4 py-2 text-center text-sm text-white shadow-md transition-all hover:bg-slate-700 hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                    type="button" data-ripple-light="true">
+                    Volver
+                </button>
+            </a>
+        </div>
 
 
     </div>
@@ -56,7 +66,9 @@
             <div class="flex flex-1 flex-col rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
                 <p class="pb-2 font-light leading-normal text-slate-600">Domain & SSL</p>
                 <p class="text-sm font-light text-slate-600">Válido hasta</p>
-                <h5 class="mb-2 text-xl font-semibold text-slate-800">12 Enero</h5>
+                <h5 class="mb-2 text-xl font-semibold text-slate-800">
+                    {{ $formattedMonitor['sslExpiration'] }}
+                </h5>
             </div>
         </div>
 
