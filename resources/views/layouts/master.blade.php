@@ -10,6 +10,10 @@
     </head>
     <body class="bg-gray-50">
 
+        @if (session('error'))
+            <x-alert error="{{ session('error') }}" />
+        @endif
+
         <div class="flex h-screen">
             <!-- Sidebar -->
             <aside

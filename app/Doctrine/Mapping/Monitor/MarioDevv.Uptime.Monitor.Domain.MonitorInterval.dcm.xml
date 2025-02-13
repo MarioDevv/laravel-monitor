@@ -6,7 +6,7 @@
 
 
     <embeddable name="MarioDevv\Uptime\Monitor\Domain\MonitorInterval">
-        <field name="value" type="smallint" column="interval" />
+        <field name="value" type="smallint" column="`interval`" />
     </embeddable>
 
 </doctrine-mapping>
