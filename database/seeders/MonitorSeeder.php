@@ -26,9 +26,10 @@ class MonitorSeeder extends Seeder
         for ($j = 1; $j <= 10; $j++) {
             $histories[] = DB::table('history')->insertGetId(
                 [
-                    'pinged_at'     => now()->subMinutes(rand(1, 1440)),
-                    'state'         => rand(1, 3),
-                    'response_time' => round(mt_rand(10, 500) / 1000, 3),
+                    'http_status_code' => rand(100, 599),
+                    'pinged_at'        => now()->subMinutes(rand(1, 1440)),
+                    'state'            => rand(1, 3),
+                    'response_time'    => round(mt_rand(10, 500) / 1000, 3),
                 ]);
         }
 

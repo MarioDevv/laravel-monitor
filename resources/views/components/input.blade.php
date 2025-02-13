@@ -1,7 +1,7 @@
 @props([
-    'placeholder' => ''
+    'placeholder' => '',
 ])
 
 <input
-        class="peer h-full w-full rounded-md border border-slate-200 bg-transparent px-3 py-2.5 pr-9 text-sm font-normal text-slate-800 placeholder-slate-400 outline-none focus:border-slate-800 focus:ring-0 disabled:cursor-not-allowed"
-        placeholder="{{ $placeholder }}"/>
+    class="peer h-full w-full rounded-md border border-slate-200 bg-transparent px-3 py-2.5 pr-9 text-sm font-normal text-slate-800 placeholder-slate-400 outline-none focus:border-slate-800 focus:ring-0 disabled:cursor-not-allowed"
+    placeholder="{{ $placeholder }}" />

@@ -104,7 +104,7 @@
 
             <div class="w-full">
                 <h3 class="ml-3 text-lg font-semibold text-slate-800">Últimas Incidencias</h3>
-                <p class="mb-5 ml-3 text-slate-500">Últimas 10 incidencias reportadas por el monitor</p>
+                <p class="mb-5 ml-3 text-slate-500">Últimas 20 incidencias reportadas por el monitor</p>
             </div>
 
             <div class="max-h-60 overflow-x-auto">
@@ -112,6 +112,9 @@
                 <table class="w-full min-w-max table-auto text-left">
                     <thead>
                         <tr>
+                            <th class="border-b border-slate-300 p-4">
+                                <p class="block text-sm font-normal leading-none text-slate-500">HTTP Code</p>
+                            </th>
                             <th class="border-b border-slate-300 p-4">
                                 <p class="block text-sm font-normal leading-none text-slate-500">Status</p>
                             </th>
@@ -123,12 +126,22 @@
                     <tbody>
                         @if (count($formattedMonitor['incidents']) > 0)
                             @foreach ($formattedMonitor['incidents'] as $history)
+                                @php
+                                    $httpStatus = (int) $history['httpStatus'];
+                                    $chipColor = match (true) {
+                                        $httpStatus >= 400 && $httpStatus < 600 => 'bg-red-300 text-white',
+                                        default => 'bg-slate-800 text-white',
+                                    };
+                                @endphp
+
                                 <tr class="hover:bg-slate-50">
                                     <td class="border-b border-slate-200 p-4">
-                                        <p
-                                            class="@if ($history['status'] == 1) text-green-500
-                  @elseif($history['status'] == 2) text-red-500
-                  @else text-gray-400 @endif block text-sm text-slate-800">
+                                        <div class="inline-block w-auto">
+                                            <x-chip :text="$history['httpStatus']" :color="$chipColor" />
+                                        </div>
+                                    </td>
+                                    <td class="border-b border-slate-200 p-4">
+                                        <p class="block text-sm text-slate-800">
                                             @if ($history['status'] == 1)
                                                 Activo
                                             @elseif($history['status'] == 2)

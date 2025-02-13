@@ -32,28 +32,12 @@ class CurlPingService implements MonitorPingService
         }
 
         return new MonitorPingInformation(
-            $this->getState($httpCode),
+            $httpCode,
             $responseTime,
             $sslExpiration
         );
     }
 
-    /**
-     * Determina el estado (OK, ERROR, etc.) a partir del código HTTP.
-     * Ejemplo sencillo:
-     */
-    private function getState(int $httpCode): int
-    {
-        if ($httpCode >= 200 && $httpCode < 400) {
-             return 1; // OK
-        }
-
-        return 2; // ERROR
-    }
-
-    /**
-     * Obtiene la fecha de expiración del certificado SSL, o null si no se pudo obtener.
-     */
     private function getSslExpirationDate(string $rawUrl, float $timeout): ?DateTimeImmutable
     {
         $host = parse_url($rawUrl, PHP_URL_HOST);

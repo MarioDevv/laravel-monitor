@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('history', function (Blueprint $table) {
             $table->id();
+            $table->integer('http_status_code');
             $table->timestamp('pinged_at');
             $table->smallInteger('state');
             $table->float('response_time');

@@ -13,8 +13,9 @@ Route::get('/', function () {
 Route::get('/monitors', MonitorsViewController::class)->name('monitors.index');
 
 Route::get('/monitor/new', function () {
-    return view('monitors.new');
+    return view('monitors.new', ['monitor' => null]);
 })->name('monitors.new');
+
 
 
 Route::post('monitor/ping/{id}', MonitorPostPingController::class)->name('monitors.ping');

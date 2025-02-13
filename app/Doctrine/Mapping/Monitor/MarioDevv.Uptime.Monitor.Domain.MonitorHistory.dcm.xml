@@ -11,15 +11,14 @@
             <generator strategy="AUTO"/>
         </id>
 
-        <embedded name="pingedAt" class="MarioDevv\Uptime\Monitor\Domain\MonitorHistoryPingedAt"
-                  use-column-prefix="false"/>
+        <field name="httpStatusCode" type="integer" column="http_status_code" />
+
+        <field name="pingedAt" type="datetime_immutable" column="pinged_at" />
 
         <embedded name="state" class="MarioDevv\Uptime\Monitor\Domain\MonitorHistoryState"
                   use-column-prefix="false"/>
 
         <field name="responseTime" type="float" precision="2"/>
-
-
 
     </entity>
 
