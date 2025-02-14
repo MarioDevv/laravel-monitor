@@ -13,17 +13,25 @@
             <div class="relative mx-4 mt-4">
                 <div class="flex flex-row items-center justify-end p-4">
                     <div class="block w-full md:w-72">
-                        <div class="relative h-10 w-full min-w-[200px]">
-                            <div
-                                class="pointer-events-none absolute right-3 top-1/2 grid h-5 w-5 -translate-y-1/2 place-items-center text-slate-400">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                    stroke="currentColor" aria-hidden="true" class="h-5 w-5">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                                </svg>
+                        <form action="{{ route('monitors.index') }}" method="GET">
+                            <div class="relative h-10 w-full min-w-[200px]">
+                                <div
+                                    class="pointer-events-none absolute right-3 top-1/2 grid h-5 w-5 -translate-y-1/2 place-items-center text-slate-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="h-5 w-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                                    </svg>
+                                </div>
+                                <input type="hidden" name="filters[0][field]" value="url">
+                                <input type="hidden" name="filters[0][operator]" value="CONTAINS">
+                                <x-input name="filters[0][value]" value="{{ request('filters.0.value') }}"
+                                    placeholder="Buscar..." />
                             </div>
-                            <x-input placeholder="Buscar..." />
-                        </div>
+
+                            <input type="hidden" name="pageSize" value="{{ request('pageSize', 10) }}">
+                            <input type="hidden" name="pageNumber" value="{{ request('pageNumber', 1) }}">
+                        </form>
                     </div>
                 </div>
             </div>
@@ -113,33 +121,47 @@
                                         <button
                                             onclick="window.location.href='{{ route('monitors.show', $monitor['id']) }}'"
                                             class="relative inline-flex h-9 w-9 items-center justify-center rounded-md text-slate-600 transition-colors hover:bg-slate-100 focus:outline-none active:bg-slate-200">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                                 stroke-linejoin="round" class="icon icon-tabler icon-tabler-eye">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                                 <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-                                                <path
-                                                    d="M21 12c-2.4 4 -5.4 6 -9 6
-                                                                                                                                                                                     c-3.6 0 -6.6 -2 -9 -6
-                                                                                                                                                                                     c2.4 -4 5.4 -6 9 -6
-                                                                                                                                                                                     c3.6 0 6.6 2 9 6" />
+                                                <path d="M21 12c-2.4 4 -5.4 6 -9 6 c-3.6 0 -6.6 -2 -9 -6
+                                                            c2.4 -4 5.4 -6 9 -6 c3.6 0 6.6 2 9 6" />
                                             </svg>
                                         </button>
 
-                                        {{-- Botón editar (ejemplo) --}}
+                                        {{-- Botón editar --}}
                                         <button
                                             class="relative inline-flex h-9 w-9 items-center justify-center rounded-md text-slate-600 transition-colors hover:bg-slate-100 focus:outline-none active:bg-slate-200">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                 viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
                                                 <path
-                                                    d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157
-                                                                                                                                                                                   3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513
-                                                                                                                                                                                   8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0
-                                                                                                                                                                                   00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25
-                                                                                                                                                                                   5.25 0 002.214-1.32l12.15-12.15z">
+                                                    d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0
+                                                                    00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l12.15-12.15z">
                                                 </path>
                                             </svg>
                                         </button>
+
+                                        <form action="{{ route('monitors.delete', $monitor['id']) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            {{-- Botón Eliminar --}}
+                                            <button
+                                                class="relative inline-flex h-9 w-9 items-center justify-center rounded-md text-slate-600 transition-colors hover:bg-slate-100 focus:outline-none active:bg-slate-200">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="icon icon-tabler icons-tabler-outline icon-tabler-trash">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                    <path d="M4 7l16 0" />
+                                                    <path d="M10 11l0 6" />
+                                                    <path d="M14 11l0 6" />
+                                                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                                                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                                                </svg>
+                                            </button>
+                                        </form>
                                     </div>
                                 </td>
                             </tr>
@@ -148,22 +170,53 @@
                 </table>
             </div>
 
+            @php
+                $currentPage = (int) request('pageNumber', 1);
+                $pageSize = (int) request('pageSize', 10);
+
+                $totalPages = ceil($count / $pageSize);
+            @endphp
+
+
+
+            @php
+                $currentPage = (int) request('pageNumber', 1);
+                $pageSize = (int) request('pageSize', 10);
+                $totalPages = ceil($count / $pageSize);
+            @endphp
+
             {{-- Paginación --}}
             <div class="flex items-center justify-between border-t border-slate-100 p-4">
                 <p class="text-sm text-slate-500">
-                    Página 1 de 10
+                    Página {{ $currentPage }} de {{ $totalPages }}
                 </p>
                 <div class="flex gap-2">
-                    <button
-                        class="inline-flex items-center justify-center rounded-md border border-slate-300 px-4 py-2 text-xs font-semibold text-slate-700 transition-colors hover:bg-slate-100 focus:outline-none active:bg-slate-200">
-                        Anterior
-                    </button>
-                    <button
-                        class="inline-flex items-center justify-center rounded-md border border-slate-300 px-4 py-2 text-xs font-semibold text-slate-700 transition-colors hover:bg-slate-100 focus:outline-none active:bg-slate-200">
-                        Siguiente
-                    </button>
+                    @if ($currentPage > 1)
+                        <a href="{{ route('monitors.index', array_merge(request()->query(), ['pageSize' => $pageSize, 'pageNumber' => $currentPage - 1])) }}"
+                            class="inline-flex items-center justify-center rounded-md border border-slate-300 px-4 py-2 text-xs font-semibold text-slate-700 transition-colors hover:bg-slate-100 focus:outline-none active:bg-slate-200">
+                            Anterior
+                        </a>
+                    @else
+                        <span
+                            class="inline-flex items-center justify-center rounded-md border border-slate-300 bg-slate-100 px-4 py-2 text-xs font-semibold text-slate-700">
+                            Anterior
+                        </span>
+                    @endif
+
+                    @if ($currentPage < $totalPages)
+                        <a href="{{ route('monitors.index', array_merge(request()->query(), ['pageSize' => $pageSize, 'pageNumber' => $currentPage + 1])) }}"
+                            class="inline-flex items-center justify-center rounded-md border border-slate-300 px-4 py-2 text-xs font-semibold text-slate-700 transition-colors hover:bg-slate-100 focus:outline-none active:bg-slate-200">
+                            Siguiente
+                        </a>
+                    @else
+                        <span
+                            class="inline-flex items-center justify-center rounded-md border border-slate-300 bg-slate-100 px-4 py-2 text-xs font-semibold text-slate-700">
+                            Siguiente
+                        </span>
+                    @endif
                 </div>
             </div>
+
         </div>
 
         {{-- Resumen de estado (sidebar) --}}
@@ -199,7 +252,6 @@
                     Using 9 of 10 monitors
                 </p>
             </div>
-
 
 
         </div>

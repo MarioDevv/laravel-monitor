@@ -155,6 +155,3 @@
         document.getElementById('advancedIntervalValue').textContent = advancedIntervalsMap[index];
     }
 </script>
-
-
-

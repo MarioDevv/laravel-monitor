@@ -23,13 +23,25 @@ class DoctrineMonitorRepository extends DoctrineRepository implements MonitorRep
 
     public function matching(Criteria $criteria): array
     {
-        $criteriaToDoctrineFields = [];
+        $criteriaToDoctrineFields = [
+            'url' => 'url.value'
+        ];
 
         $doctrineCriteria = (new CriteriaToDoctrineConverter($criteriaToDoctrineFields))->convert($criteria);
 
         return $this->repository(Monitor::class)->matching($doctrineCriteria)->toArray();
     }
 
+    public function count(Criteria $criteria): int
+    {
+        $criteriaToDoctrineFields = [
+            'url' => 'url.value'
+        ];
+
+        $doctrineCriteria = (new CriteriaToDoctrineConverter($criteriaToDoctrineFields))->convert($criteria);
+
+        return $this->repository(Monitor::class)->matching($doctrineCriteria)->count();
+    }
 
     public function byId(int $id): ?Monitor
     {
