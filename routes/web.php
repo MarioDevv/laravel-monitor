@@ -8,13 +8,13 @@ use App\Http\Monitor\MonitorPostPingController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('home');
+    return view('web.home');
 })->name('home');
 
 Route::get('/monitors', MonitorsViewController::class)->name('monitors.index');
 
 Route::get('/monitor/new', function () {
-    return view('monitors.new', ['monitor' => null]);
+    return view('web.admin.monitors.new', ['monitor' => null]);
 })->name('monitors.new');
 
 

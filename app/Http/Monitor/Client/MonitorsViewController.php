@@ -60,7 +60,7 @@ class MonitorsViewController
 
         $monitors = array_map(fn(PaginatedMonitorDTO $monitor) => $monitor->json(), $array);
 
-        return view('monitors.index', compact('monitors', 'count'));
+        return view('web.admin.monitors.index', compact('monitors', 'count'));
     }
 
 

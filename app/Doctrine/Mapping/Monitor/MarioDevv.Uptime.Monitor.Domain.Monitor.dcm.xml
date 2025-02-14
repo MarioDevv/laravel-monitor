@@ -22,7 +22,7 @@
 
         <embedded name="sslExpiration" class="MarioDevv\Uptime\Monitor\Domain\MonitorSSLExpiration" use-column-prefix="false"/>
 
-        <many-to-many field="history" target-entity="MarioDevv\Uptime\Monitor\Domain\MonitorHistory">
+        <many-to-many field="history" target-entity="MarioDevv\Uptime\Monitor\Domain\MonitorHistory" orphan-removal="true">
             <cascade>
                 <cascade-all/>
             </cascade>

@@ -11,7 +11,7 @@
     <body class="bg-gray-50">
 
         @if (session('error'))
-            <x-alert error="{{ session('error') }}" />
+            <x-admin::alert error="{{ session('error') }}" />
         @endif
 
         <div class="flex h-screen">
