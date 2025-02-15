@@ -14,8 +14,7 @@
 
         <!-- Slider para el intervalo -->
         <input id="intervalRange" type="range" name="interval" min="0" max="2" step="1"
-               value="0" class="w-full cursor-pointer accent-slate-800"
-               oninput="updateIntervalLabel(this.value)" />
+            value="0" class="w-full cursor-pointer accent-slate-800" oninput="updateIntervalLabel(this.value)" />
     </div>
 
     <hr class="my-5">
@@ -36,8 +35,8 @@
 
         <!-- Slider para el timeout -->
         <input id="advancedIntervalRange" type="range" name="timeout" min="0" max="3" step="1"
-               value="0" class="my-2 w-full cursor-pointer accent-slate-800"
-               oninput="updateAdvancedIntervalLabel(this.value)" />
+            value="0" class="my-2 w-full cursor-pointer accent-slate-800"
+            oninput="updateAdvancedIntervalLabel(this.value)" />
     </div>
 </div>
 

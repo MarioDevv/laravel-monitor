@@ -4,7 +4,8 @@
     <div>
         <label class="mb-2 block text-sm text-slate-800"><b>Monitor type</b></label>
         <div class="relative">
-            <select name="monitor_type" disabled class="pointer-events-none w-full cursor-pointer rounded border border-slate-200 bg-transparent py-2 pl-3 pr-8 text-sm text-slate-700 opacity-50 shadow-sm">
+            <select name="monitor_type" disabled
+                class="pointer-events-none w-full cursor-pointer rounded border border-slate-200 bg-transparent py-2 pl-3 pr-8 text-sm text-slate-700 opacity-50 shadow-sm">
                 <option value="curl" selected>Curl</option>
                 <option value="ping">Ping</option>
                 <option value="port">Port</option>
@@ -18,7 +19,9 @@
     {{-- URL a monitorear --}}
     <div class="w-full">
         <label class="mb-2 block text-sm text-slate-800"><b>URL to monitor</b></label>
-        <input type="text" name="url" class="w-full rounded-md border border-slate-200 bg-transparent px-3 py-2 text-sm text-slate-700 shadow-sm" placeholder="http(s)://" />
+        <input type="text" name="url"
+            class="w-full rounded-md border border-slate-200 bg-transparent px-3 py-2 text-sm text-slate-700 shadow-sm"
+            placeholder="http(s)://" />
     </div>
 
 </div>

@@ -2,10 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Doctrine\Repository\Monitor\CurlPingService;
-use App\Jobs\PingMonitorJob;
+use App\Jobs\Monitor\PingMonitorJob;
 use Illuminate\Console\Command;
-use MarioDevv\Uptime\Monitor\Application\Check\CheckMonitors;
 use MarioDevv\Uptime\Monitor\Domain\MonitorRepository;
 
 class PingMonitorsCommand extends Command

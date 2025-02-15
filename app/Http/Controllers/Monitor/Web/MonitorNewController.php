@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Monitor;
+namespace App\Http\Controllers\Monitor\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
@@ -11,9 +11,8 @@ use MarioDevv\Uptime\Monitor\Application\Create\CreateMonitor;
 use MarioDevv\Uptime\Monitor\Application\Create\CreateMonitorRequest;
 use Throwable;
 
-class MonitorPostController extends Controller
+class MonitorNewController extends Controller
 {
-
     private CreateMonitor $createMonitor;
 
 

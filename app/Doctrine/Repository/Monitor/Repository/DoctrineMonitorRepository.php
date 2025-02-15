@@ -35,7 +35,8 @@ class DoctrineMonitorRepository extends DoctrineRepository implements MonitorRep
     public function count(Criteria $criteria): int
     {
         $criteriaToDoctrineFields = [
-            'url' => 'url.value'
+            'url'   => 'url.value',
+            'state' => 'state.value'
         ];
 
         $doctrineCriteria = (new CriteriaToDoctrineConverter($criteriaToDoctrineFields))->convert($criteria);

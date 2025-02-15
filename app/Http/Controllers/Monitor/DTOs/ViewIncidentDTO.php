@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Monitor\DTOs;
+namespace App\Http\Controllers\Monitor\DTOs;
 
 use MarioDevv\Uptime\Monitor\Domain\MonitorHistory;
 

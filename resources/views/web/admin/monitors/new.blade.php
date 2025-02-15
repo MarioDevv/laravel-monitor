@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <form method="POST" action="{{ route('monitors.store') }}">
+    <form method="POST" action="{{ route('monitor.store') }}">
         @csrf
 
         {{-- Encabezado con título y botón de volver --}}
@@ -25,5 +25,3 @@
     </form>
 
 @endsection
-
-

@@ -8,11 +8,11 @@
         </div>
         <div class="flex flex-col">
             <x-admin::checkbox text="SMS Message" id="sms" name="notify_sms" :checked="false" />
-            <p class="text-sm text-slate-800 underline cursor-pointer">Add phone number</p>
+            <p class="cursor-pointer text-sm text-slate-800 underline">Add phone number</p>
         </div>
         <div class="flex flex-col">
             <x-admin::checkbox text="Voice call" id="call" name="notify_call" :checked="false" />
-            <p class="text-sm text-slate-800 underline cursor-pointer">Add phone number</p>
+            <p class="cursor-pointer text-sm text-slate-800 underline">Add phone number</p>
         </div>
         <div class="flex flex-col">
             <x-admin::checkbox text="Mobile push" id="push" name="notify_push" :checked="false" />

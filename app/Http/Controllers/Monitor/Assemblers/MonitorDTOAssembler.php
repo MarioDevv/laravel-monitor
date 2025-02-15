@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Monitor\Assemblers;
+namespace App\Http\Controllers\Monitor\Assemblers;
 
 use MarioDevv\Uptime\Monitor\Application\MonitorAssemblerInterface;
 use MarioDevv\Uptime\Monitor\Domain\Monitor;

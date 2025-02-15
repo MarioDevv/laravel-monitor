@@ -7,21 +7,21 @@
 
         <div class="flex items-center justify-around gap-4">
             <div class="flex flex-col items-center">
-                <span class="text-2xl font-semibold">{{ $down ?? 0 }}</span>
+                <span class="text-2xl font-semibold">{{ $summary['down'] ?? 0 }}</span>
                 <span class="text-xs text-slate-500">Down</span>
             </div>
             <div class="flex flex-col items-center">
-                <span class="text-2xl font-semibold">{{ $up ?? 0 }}</span>
+                <span class="text-2xl font-semibold">{{ $summary['up'] ?? 0 }}</span>
                 <span class="text-xs text-slate-500">Up</span>
             </div>
             <div class="flex flex-col items-center">
-                <span class="text-2xl font-semibold">{{ $stopped ?? 0 }}</span>
+                <span class="text-2xl font-semibold">{{ $summary['stopped'] ?? 0 }}</span>
                 <span class="text-xs text-slate-500">Stopped</span>
             </div>
         </div>
 
         <p class="text-center text-xs text-slate-500">
-            Using {{ $usedMonitors ?? 0 }} of {{ $totalMonitors ?? 10 }} monitors
+            Using {{ $summary['use'] ?? 0 }} of {{ $summary['total'] ?? 10 }} monitors
         </p>
     </div>
 
