@@ -17,14 +17,21 @@ use MarioDevv\Uptime\Monitor\Application\Find\FindMonitor;
 use MarioDevv\Uptime\Monitor\Application\Find\FindMonitorRequest;
 use MarioDevv\Uptime\Monitor\Application\Ping\PingMonitor;
 use MarioDevv\Uptime\Monitor\Application\Ping\PingMonitorRequest;
+use MarioDevv\Uptime\Monitor\Application\Resume\ResumeMonitor;
+use MarioDevv\Uptime\Monitor\Application\Resume\ResumeMonitorRequest;
+use MarioDevv\Uptime\Monitor\Application\Stop\StopMonitor;
+use MarioDevv\Uptime\Monitor\Application\Stop\StopMonitorRequest;
+use MarioDevv\Uptime\Monitor\Domain\MonitorNotFoundException;
 use MarioDevv\Uptime\Monitor\Domain\MonitorRepository;
 use Throwable;
 
 class MonitorShowController extends Controller
 {
 
-    private FindMonitor $findMonitor;
-    private PingMonitor $pingMonitor;
+    private FindMonitor   $findMonitor;
+    private PingMonitor   $pingMonitor;
+    private StopMonitor   $stopMonitor;
+    private ResumeMonitor $resumeMonitor;
 
     public function __construct()
     {
@@ -37,6 +44,14 @@ class MonitorShowController extends Controller
             app(MonitorRepository::class),
             new CurlPingService(),
             new LaravelMailService()
+        );
+
+        $this->stopMonitor = new StopMonitor(
+            app(MonitorRepository::class)
+        );
+
+        $this->resumeMonitor = new ResumeMonitor(
+            app(MonitorRepository::class)
         );
     }
 
@@ -63,6 +78,49 @@ class MonitorShowController extends Controller
             (new PingMonitorRequest((int)$request->id));
 
             return back();
+
+        } catch (Throwable $th) {
+            Log::error($th->getMessage() . ' File: ' . $th->getFile() . ' Line: ' . $th->getLine());
+            return back()->with('error', 'Something went wrong');
+        }
+    }
+
+
+    public function stop(Request $request)
+    {
+
+        try {
+
+            ($this->stopMonitor)
+            (new StopMonitorRequest((int)$request->id));
+
+            return back();
+
+        } catch (MonitorNotFoundException $e) {
+            Log::error($e->getMessage() . ' File: ' . $e->getFile() . ' Line: ' . $e->getLine());
+            return back()->with('error', 'Something went wrong');
+
+        } catch (Throwable $th) {
+            Log::error($th->getMessage() . ' File: ' . $th->getFile() . ' Line: ' . $th->getLine());
+            return back()->with('error', 'Something went wrong');
+        }
+
+    }
+
+
+    public function resume(Request $request)
+    {
+
+        try {
+
+            ($this->resumeMonitor)
+            (new ResumeMonitorRequest((int)$request->id));
+
+            return back();
+
+        } catch (MonitorNotFoundException $e) {
+            Log::error($e->getMessage() . ' File: ' . $e->getFile() . ' Line: ' . $e->getLine());
+            return back()->with('error', 'Something went wrong');
 
         } catch (Throwable $th) {
             Log::error($th->getMessage() . ' File: ' . $th->getFile() . ' Line: ' . $th->getLine());

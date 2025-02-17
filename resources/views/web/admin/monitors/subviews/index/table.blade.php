@@ -30,6 +30,13 @@
                             'textColor' => 'text-yellow-700',
                             'bgOpacity' => 'bg-yellow-400/10',
                         ],
+                        4 => [
+                            'color' => 'bg-slate-400',
+                            'text' => 'Pendiente',
+                            'textColor' => 'text-slate-700',
+                            'bgOpacity' => 'bg-slate-400/10',
+                        ],
+
                         default => [
                             'color' => 'bg-slate-400',
                             'text' => 'Desconocido',

@@ -26,6 +26,9 @@
                 <cascade>
                     <cascade-all/>
                 </cascade>
+                <order-by>
+                    <order-by-field name="surrogateId" direction="ASC" />
+                </order-by>
             <join-table name="monitors_history">
                 <join-columns>
                     <join-column name="monitor_id" referenced-column-name="id"/>

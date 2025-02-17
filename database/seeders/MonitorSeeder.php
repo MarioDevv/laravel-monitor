@@ -14,9 +14,9 @@ class MonitorSeeder extends Seeder
             $monitors[] = DB::table('monitors')->insertGetId(
                 [
                     'url'            => "https://example$i.com",
-                    'interval'       => rand(30, 120),
-                    'state'          => rand(1, 3),
-                    'time_out'       => rand(10, 90),
+                    'interval'       => 30,
+                    'state'          => rand(1, 4),
+                    'time_out'       => rand(1, 60),
                     'last_check'     => now()->subMinutes(rand(1, 60)),
                     'ssl_expiration' => null
                 ]);

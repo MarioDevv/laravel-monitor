@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('monitors', function (Blueprint $table) {
             $table->id();
             $table->string('url');
-            $table->tinyInteger('interval');
+            $table->integer('interval');
             $table->tinyInteger('state');
             $table->string('time_out');
             $table->timestamp('last_check')->nullable();

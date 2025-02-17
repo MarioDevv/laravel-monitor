@@ -18,15 +18,23 @@ class CurlPingService implements MonitorPingService
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_TIMEOUT, $timeout->value());
 
-        curl_exec($ch);
+        $result       = curl_exec($ch);
         $responseTime = microtime(true) - $start;
 
-        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
+        if ($result === false || curl_errno($ch)) {
+            curl_close($ch);
+            return new MonitorPingInformation(
+                504,
+                $responseTime,
+                null
+            );
+        }
+
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
 
         $sslExpiration = null;
-
         if (str_starts_with($url->value(), 'https://')) {
             $sslExpiration = $this->getSslExpirationDate($url->value(), $timeout->value());
         }
@@ -41,19 +49,17 @@ class CurlPingService implements MonitorPingService
     private function getSslExpirationDate(string $rawUrl, float $timeout): ?DateTimeImmutable
     {
         $host = parse_url($rawUrl, PHP_URL_HOST);
-
         if (!$host) {
             return null;
         }
 
         $port = parse_url($rawUrl, PHP_URL_PORT) ?: 443;
 
-        $context = stream_context_create(
-            [
-                'ssl' => [
-                    'capture_peer_cert' => true,
-                ],
-            ]);
+        $context = stream_context_create([
+            'ssl' => [
+                'capture_peer_cert' => true,
+            ],
+        ]);
 
         $fp = @stream_socket_client(
             "ssl://$host:$port",
@@ -72,13 +78,11 @@ class CurlPingService implements MonitorPingService
         fclose($fp);
 
         $cert = $params['options']['ssl']['peer_certificate'] ?? null;
-
         if (!$cert) {
             return null;
         }
 
         $certInfo = openssl_x509_parse($cert);
-
         if (!$certInfo || !isset($certInfo['validTo_time_t'])) {
             return null;
         }

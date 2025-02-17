@@ -16,10 +16,16 @@ Route::get('/monitor/new', function () {
 
 
 Route::get('/monitors', MonitorIndexController::class)->name('monitors.index');
-Route::post('monitor', MonitorNewController::class)->name('monitor.store');
 Route::get('/monitor/{id}', MonitorShowController::class)->name('monitor.show');
+
+Route::post('monitor', MonitorNewController::class)->name('monitor.store');
+Route::post('monitor/ping/{id}', [MonitorShowController::class, 'ping'])->name('monitor.ping');
+
+Route::patch('monitor/{id}/stop', [MonitorShowController::class, 'stop'])->name('monitor.stop');
+Route::patch('monitor/{id}/resume', [MonitorShowController::class, 'resume'])->name('monitor.resume');
+
+
 Route::delete('/monitor/{id}', [MonitorIndexController::class, 'delete'])->name('monitor.delete');
-Route::post('monitor/ping/{id}', [MonitorShowController::class, 'ping'])->name('monitors.ping');
 
 
 
