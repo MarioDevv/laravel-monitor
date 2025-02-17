@@ -5,8 +5,8 @@
                                       https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
 
-    <embeddable name="MarioDevv\Uptime\Monitor\Domain\MonitorLastCheck">
-        <field name="value" type="datetime_immutable" column="last_check" nullable="true"/>
+    <embeddable name="MarioDevv\Uptime\Monitoring\Domain\MonitorInterval">
+        <field name="value" type="smallint" column="`interval`" />
     </embeddable>
 
 </doctrine-mapping>

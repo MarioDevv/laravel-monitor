@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Monitor\DTOs;
 
-use MarioDevv\Uptime\Monitor\Domain\MonitorHistory;
+use MarioDevv\Uptime\Monitoring\Domain\MonitorHistory;
 
 class ViewIncidentDTO
 {

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Monitor\DTOs;
 
-use MarioDevv\Uptime\Monitor\Domain\Monitor;
+use MarioDevv\Uptime\Monitoring\Domain\Monitor;
 
 class PaginatedMonitorDTO
 {

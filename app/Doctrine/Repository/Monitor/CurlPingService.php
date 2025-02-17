@@ -3,10 +3,10 @@
 namespace App\Doctrine\Repository\Monitor;
 
 use DateTimeImmutable;
-use MarioDevv\Uptime\Monitor\Domain\MonitorPingInformation;
-use MarioDevv\Uptime\Monitor\Domain\MonitorPingService;
-use MarioDevv\Uptime\Monitor\Domain\MonitorTimeOut;
-use MarioDevv\Uptime\Monitor\Domain\MonitorUrl;
+use MarioDevv\Uptime\Monitoring\Domain\MonitorPingInformation;
+use MarioDevv\Uptime\Monitoring\Domain\MonitorPingService;
+use MarioDevv\Uptime\Monitoring\Domain\MonitorTimeOut;
+use MarioDevv\Uptime\Monitoring\Domain\MonitorUrl;
 
 class CurlPingService implements MonitorPingService
 {

@@ -7,8 +7,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
-use MarioDevv\Uptime\Monitor\Application\Create\CreateMonitor;
-use MarioDevv\Uptime\Monitor\Application\Create\CreateMonitorRequest;
+use MarioDevv\Uptime\Monitoring\Application\Create\CreateMonitor;
+use MarioDevv\Uptime\Monitoring\Application\Create\CreateMonitorRequest;
 use Throwable;
 
 class MonitorNewController extends Controller

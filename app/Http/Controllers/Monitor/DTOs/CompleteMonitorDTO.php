@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Monitor\DTOs;
 
-use MarioDevv\Uptime\Monitor\Domain\Monitor;
-use MarioDevv\Uptime\Monitor\Domain\MonitorHistory;
+use MarioDevv\Uptime\Monitoring\Domain\Monitor;
+use MarioDevv\Uptime\Monitoring\Domain\MonitorHistory;
 
 class CompleteMonitorDTO
 {

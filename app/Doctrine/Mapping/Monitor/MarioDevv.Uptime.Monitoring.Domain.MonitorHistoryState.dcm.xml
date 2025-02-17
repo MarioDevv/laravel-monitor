@@ -5,8 +5,8 @@
                                       https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
 
-    <embeddable name="MarioDevv\Uptime\Monitor\Domain\MonitorInterval">
-        <field name="value" type="smallint" column="`interval`" />
+    <embeddable name="MarioDevv\Uptime\Monitoring\Domain\MonitorHistoryState">
+        <field name="value" type="smallint" column="state" />
     </embeddable>
 
 </doctrine-mapping>

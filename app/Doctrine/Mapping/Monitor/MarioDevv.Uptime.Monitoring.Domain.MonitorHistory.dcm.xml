@@ -5,7 +5,7 @@
                                       https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
 
-    <entity name="MarioDevv\Uptime\Monitor\Domain\MonitorHistory" table="history">
+    <entity name="MarioDevv\Uptime\Monitoring\Domain\MonitorHistory" table="history">
 
         <id name="surrogateId" type="integer" column="id">
             <generator strategy="AUTO"/>
@@ -15,7 +15,7 @@
 
         <field name="pingedAt" type="datetime_immutable" column="pinged_at" />
 
-        <embedded name="state" class="MarioDevv\Uptime\Monitor\Domain\MonitorHistoryState"
+        <embedded name="state" class="MarioDevv\Uptime\Monitoring\Domain\MonitorHistoryState"
                   use-column-prefix="false"/>
 
         <field name="responseTime" type="float" precision="2"/>

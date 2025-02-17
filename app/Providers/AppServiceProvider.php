@@ -5,7 +5,7 @@ namespace App\Providers;
 use App\Doctrine\Repository\Monitor\Repository\DoctrineMonitorRepository;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use MarioDevv\Uptime\Monitor\Domain\MonitorRepository;
+use MarioDevv\Uptime\Monitoring\Domain\MonitorRepository;
 
 class AppServiceProvider extends ServiceProvider
 {

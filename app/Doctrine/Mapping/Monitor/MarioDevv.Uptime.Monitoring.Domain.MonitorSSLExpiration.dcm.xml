@@ -5,8 +5,8 @@
                                       https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
 
-    <embeddable name="MarioDevv\Uptime\Monitor\Domain\MonitorHistoryState">
-        <field name="value" type="smallint" column="state" />
+    <embeddable name="MarioDevv\Uptime\Monitoring\Domain\MonitorSSLExpiration">
+        <field name="value" type="datetime_immutable" column="ssl_expiration" nullable="true" />
     </embeddable>
 
 </doctrine-mapping>

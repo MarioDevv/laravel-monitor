@@ -14,12 +14,12 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use MarioDevv\Criteria\CriteriaFromUrlConverter;
-use MarioDevv\Uptime\Monitor\Application\Count\CountMonitors;
-use MarioDevv\Uptime\Monitor\Application\Delete\DeleteMonitor;
-use MarioDevv\Uptime\Monitor\Application\Delete\DeleteMonitorRequest;
-use MarioDevv\Uptime\Monitor\Application\Search\SearchMonitors;
-use MarioDevv\Uptime\Monitor\Domain\MonitorRepository;
-use MarioDevv\Uptime\Monitor\Domain\MonitorState;
+use MarioDevv\Uptime\Monitoring\Application\Count\CountMonitors;
+use MarioDevv\Uptime\Monitoring\Application\Delete\DeleteMonitor;
+use MarioDevv\Uptime\Monitoring\Application\Delete\DeleteMonitorRequest;
+use MarioDevv\Uptime\Monitoring\Application\Search\SearchMonitors;
+use MarioDevv\Uptime\Monitoring\Domain\MonitorRepository;
+use MarioDevv\Uptime\Monitoring\Domain\MonitorState;
 use Throwable;
 
 class MonitorIndexController

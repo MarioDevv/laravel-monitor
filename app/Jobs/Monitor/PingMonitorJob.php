@@ -6,9 +6,9 @@ use App\Doctrine\Repository\Monitor\CurlPingService;
 use App\Doctrine\Repository\Monitor\LaravelMailService;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
-use MarioDevv\Uptime\Monitor\Application\Ping\PingMonitor;
-use MarioDevv\Uptime\Monitor\Application\Ping\PingMonitorRequest;
-use MarioDevv\Uptime\Monitor\Domain\MonitorRepository;
+use MarioDevv\Uptime\Monitoring\Application\Ping\PingMonitor;
+use MarioDevv\Uptime\Monitoring\Application\Ping\PingMonitorRequest;
+use MarioDevv\Uptime\Monitoring\Domain\MonitorRepository;
 
 class PingMonitorJob implements ShouldQueue
 {

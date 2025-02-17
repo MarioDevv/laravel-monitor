@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                                      https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="MarioDevv\Uptime\Monitoring\Domain\Monitor" table="monitors">
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <embedded name="url" class="MarioDevv\Uptime\Monitoring\Domain\MonitorUrl" use-column-prefix="false"/>
+
+        <embedded name="interval" class="MarioDevv\Uptime\Monitoring\Domain\MonitorInterval" use-column-prefix="false"/>
+
+        <embedded name="state" class="MarioDevv\Uptime\Monitoring\Domain\MonitorState" use-column-prefix="false"/>
+
+        <embedded name="timeOut" class="MarioDevv\Uptime\Monitoring\Domain\MonitorTimeOut" use-column-prefix="false"/>
+
+        <embedded name="lastCheck" class="MarioDevv\Uptime\Monitoring\Domain\MonitorLastCheck" use-column-prefix="false"/>
+
+        <embedded name="sslExpiration" class="MarioDevv\Uptime\Monitoring\Domain\MonitorSSLExpiration" use-column-prefix="false"/>
+
+        <many-to-many field="history" target-entity="MarioDevv\Uptime\Monitoring\Domain\MonitorHistory" orphan-removal="true">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+            <join-table name="monitors_history">
+                <join-columns>
+                    <join-column name="monitor_id" referenced-column-name="id"/>
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="history_id" referenced-column-name="id"/>
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+
+    </entity>
+
+</doctrine-mapping>

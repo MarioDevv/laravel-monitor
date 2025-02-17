@@ -5,8 +5,8 @@ namespace App\Doctrine\Repository\Monitor\Repository;
 use App\Doctrine\DoctrineRepository;
 use CodelyTv\Criteria\Criteria;
 use MarioDevv\Criteria\CriteriaToDoctrineConverter;
-use MarioDevv\Uptime\Monitor\Domain\Monitor;
-use MarioDevv\Uptime\Monitor\Domain\MonitorRepository;
+use MarioDevv\Uptime\Monitoring\Domain\Monitor;
+use MarioDevv\Uptime\Monitoring\Domain\MonitorRepository;
 
 class DoctrineMonitorRepository extends DoctrineRepository implements MonitorRepository
 {

@@ -5,8 +5,8 @@
                                       https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
 
-    <embeddable name="MarioDevv\Uptime\Monitor\Domain\MonitorState">
-        <field name="value" type="smallint" column="state" />
+    <embeddable name="MarioDevv\Uptime\Monitoring\Domain\MonitorTimeOut">
+        <field name="value" type="smallint" column="time_out"/>
     </embeddable>
 
 </doctrine-mapping>

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Monitor\Assemblers;
 
-use MarioDevv\Uptime\Monitor\Application\MonitorAssemblerInterface;
-use MarioDevv\Uptime\Monitor\Domain\Monitor;
+use MarioDevv\Uptime\Monitoring\Application\MonitorAssemblerInterface;
+use MarioDevv\Uptime\Monitoring\Domain\Monitor;
 
 class MonitorDTOAssembler implements MonitorAssemblerInterface
 {

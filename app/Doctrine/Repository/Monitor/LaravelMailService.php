@@ -3,8 +3,8 @@
 namespace App\Doctrine\Repository\Monitor;
 
 use App\Jobs\Monitor\SendMonitorDownMailJob;
-use MarioDevv\Uptime\Monitor\Domain\Monitor;
-use MarioDevv\Uptime\Monitor\Domain\MonitorNotifier;
+use MarioDevv\Uptime\Monitoring\Domain\Monitor;
+use MarioDevv\Uptime\Monitoring\Domain\MonitorNotifier;
 
 class LaravelMailService implements MonitorNotifier
 {

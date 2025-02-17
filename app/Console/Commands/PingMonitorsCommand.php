@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use App\Jobs\Monitor\PingMonitorJob;
 use Illuminate\Console\Command;
-use MarioDevv\Uptime\Monitor\Domain\MonitorRepository;
+use MarioDevv\Uptime\Monitoring\Domain\MonitorRepository;
 
 class PingMonitorsCommand extends Command
 {

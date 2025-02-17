@@ -13,16 +13,16 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use MarioDevv\Uptime\Monitor\Application\Find\FindMonitor;
-use MarioDevv\Uptime\Monitor\Application\Find\FindMonitorRequest;
-use MarioDevv\Uptime\Monitor\Application\Ping\PingMonitor;
-use MarioDevv\Uptime\Monitor\Application\Ping\PingMonitorRequest;
-use MarioDevv\Uptime\Monitor\Application\Resume\ResumeMonitor;
-use MarioDevv\Uptime\Monitor\Application\Resume\ResumeMonitorRequest;
-use MarioDevv\Uptime\Monitor\Application\Stop\StopMonitor;
-use MarioDevv\Uptime\Monitor\Application\Stop\StopMonitorRequest;
-use MarioDevv\Uptime\Monitor\Domain\MonitorNotFoundException;
-use MarioDevv\Uptime\Monitor\Domain\MonitorRepository;
+use MarioDevv\Uptime\Monitoring\Application\Find\FindMonitor;
+use MarioDevv\Uptime\Monitoring\Application\Find\FindMonitorRequest;
+use MarioDevv\Uptime\Monitoring\Application\Ping\PingMonitor;
+use MarioDevv\Uptime\Monitoring\Application\Ping\PingMonitorRequest;
+use MarioDevv\Uptime\Monitoring\Domain\MonitorRepository;
+use MarioDevv\Uptime\Monitoring\Application\Resume\ResumeMonitor;
+use MarioDevv\Uptime\Monitoring\Application\Resume\ResumeMonitorRequest;
+use MarioDevv\Uptime\Monitoring\Application\Stop\StopMonitor;
+use MarioDevv\Uptime\Monitoring\Application\Stop\StopMonitorRequest;
+use MarioDevv\Uptime\Monitoring\Domain\MonitorNotFoundException;
 use Throwable;
 
 class MonitorShowController extends Controller
