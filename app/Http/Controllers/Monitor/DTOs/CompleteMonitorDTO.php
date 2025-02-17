@@ -51,7 +51,7 @@ class CompleteMonitorDTO
             'responseTimeAvg' => round($this->responseTimeAvg, 2),
             'responseTimeMax' => round($this->responseTimeMax, 2),
             'responseTimeMin' => round($this->responseTimeMin, 2),
-            'incidents'       => array_map(fn(ViewIncidentDTO $incident) => $incident->json(), $this->history),
+            'incidents'       => $this->getIncidentHistory(),
         ];
     }
 
@@ -59,5 +59,14 @@ class CompleteMonitorDTO
     {
         $array = explode('//', $value);
         return $array[1];
+    }
+
+    public function getIncidentHistory(): array
+    {
+        $historyArray = $this->history;
+
+        usort($historyArray, fn(ViewIncidentDTO $a, ViewIncidentDTO $b) => $b->json()['at'] <=> $a->json()['at']);
+
+        return array_map(fn(ViewIncidentDTO $history) => $history->json(), $historyArray);
     }
 }

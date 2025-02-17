@@ -50,6 +50,7 @@ class MonitorShowController extends Controller
 
         $formattedMonitor = $monitor->json();
 
+
         return view('web.admin.monitors.show', compact('formattedMonitor'));
     }
 
