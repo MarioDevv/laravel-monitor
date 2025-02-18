@@ -12,6 +12,7 @@ return new class extends Migration {
     {
         Schema::create('monitors', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('url');
             $table->integer('interval');
             $table->tinyInteger('state');

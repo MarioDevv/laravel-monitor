@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -13,6 +14,7 @@ class MonitorSeeder extends Seeder
         for ($i = 1; $i <= 5; $i++) {
             $monitors[] = DB::table('monitors')->insertGetId(
                 [
+                    'user_id'        => User::all()->random()->id,
                     'url'            => "https://example$i.com",
                     'interval'       => 30,
                     'state'          => rand(1, 4),

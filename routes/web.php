@@ -1,11 +1,19 @@
 <?php
 
+use App\Http\Controllers\Auth\SignInController;
 use App\Http\Controllers\Monitor\Web\MonitorIndexController;
 use App\Http\Controllers\Monitor\Web\MonitorNewController;
 use App\Http\Controllers\Monitor\Web\MonitorShowController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
+    return view('web.login');
+})->name('home');
+
+
+Route::post('sign-in', SignInController::class)->name('sign-in');
+
+Route::get('/dashboard', function () {
     return view('web.home');
 })->name('home');
 

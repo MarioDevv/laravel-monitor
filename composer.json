@@ -16,7 +16,7 @@
     "laravel/framework": "^11.31",
     "laravel/tinker": "^2.9",
     "mariodevv/criteria-from-url-converter": "*",
-    "mariodevv/uptime": "^2.2"
+    "mariodevv/uptime": "dev-feature/Users"
   },
   "require-dev": {
     "fakerphp/faker": "^1.23",

@@ -1,4 +1,4 @@
-@extends('web.admin.layouts.master')
+@extends('web.admin.layouts.dashboard')
 
 @section('title', 'Monitores')
 
